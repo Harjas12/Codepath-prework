@@ -84,11 +84,8 @@ class ViewController: UIViewController {
             numOfChecksLabel.text = "2 Check:"
             splitBill2.text = currencyFormatter.string(from: NSNumber(value: (bill + tip) / 2))
         }
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        // saves bill value before closing app
+        // saves bill text field value
         userDefaults.set(billTextField.text!, forKey: "lastBill")
     }
-    
 }
 
