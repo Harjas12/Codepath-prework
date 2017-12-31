@@ -34,7 +34,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-One of the struggles I had when creating this application was prefilling the information onto the screen when the app loaded up. I realized that the issue was that I was reading the saved data after the view is rendered. Once I understood how the view life cycle of iOS works, I was able to read the saved data before the view was rendered. This was I could fill in the missing information before the user the page.
+One of the struggles I had when creating this application was prefilling the information onto the screen when the app loaded up. I realized that the issue was that I was reading the saved data after the view is rendered. Once I understood how the view life cycle in iOS works, I was able to read the saved data before the view was rendered. This was I could fill in the missing information before the user sees the page.
 
 ## License
 
