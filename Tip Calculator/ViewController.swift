@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     var numOfChecks = 2
     var useCustomTip = false
     var tipPercentage = 0.0;
+    let clearTime = 600.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,16 @@ class ViewController: UIViewController {
         tipIndex = userDefaults.integer(forKey: "tipIndex")
         customTip = userDefaults.double(forKey: "customTip")
         billTextField.text = userDefaults.string(forKey: "lastBill")
+        //clears bill if it was last entered an hour ago
+        let lastUse = userDefaults.object(forKey: "lastUpdate") as? Date ?? Date()
+        if(-1 * lastUse.timeIntervalSinceNow < clearTime) {
+            print("load last bill")
+            billTextField.text = userDefaults.string(forKey: "lastBill")
+        } else {
+            print("clearing last bill")
+            billTextField.text = ""
+            userDefaults.set("", forKey: "lastBill")
+        }
         numOfChecks = userDefaults.integer(forKey: "numOfChecks")
         useCustomTip = userDefaults.bool(forKey: "useCustomTip")
         // set tip percentage based on user selection
@@ -68,6 +79,11 @@ class ViewController: UIViewController {
     @IBAction func onEdit(_ sender: Any) {
         // calculates the tip based on new input
         updateValues()
+        // saves bill text field value
+        userDefaults.set(billTextField.text!, forKey: "lastBill")
+        // saves the last time the bill was updated
+        userDefaults.set(Date(), forKey: "lastUpdate")
+
     }
     // calculates the tip based on changes to the input
     func updateValues() {
@@ -81,11 +97,9 @@ class ViewController: UIViewController {
             numOfChecksLabel.text = String(numOfChecks) + " Checks:"
             splitBill2.text = currencyFormatter.string(from: NSNumber(value: (bill + tip) / Double(numOfChecks)))
         } else {
-            numOfChecksLabel.text = "2 Check:"
+            numOfChecksLabel.text = "2 Checks:"
             splitBill2.text = currencyFormatter.string(from: NSNumber(value: (bill + tip) / 2))
         }
-        // saves bill text field value
-        userDefaults.set(billTextField.text!, forKey: "lastBill")
     }
 }
 
