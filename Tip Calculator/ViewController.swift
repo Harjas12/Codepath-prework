@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         billTextField.text = userDefaults.string(forKey: "lastBill")
         //clears bill if it was last entered an hour ago
         let lastUse = userDefaults.object(forKey: "lastUpdate") as? Date ?? Date()
-        if(-1 * lastUse.timeIntervalSinceNow < clearTime) {
+        if -1 * lastUse.timeIntervalSinceNow < clearTime {
             print("load last bill")
             billTextField.text = userDefaults.string(forKey: "lastBill")
         } else {
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         numOfChecks = userDefaults.integer(forKey: "numOfChecks")
         useCustomTip = userDefaults.bool(forKey: "useCustomTip")
         // set tip percentage based on user selection
-        if(useCustomTip) {
+        if useCustomTip {
             tipPercentage = customTip
         } else {
             tipPercentage = percentages[tipIndex]
@@ -93,7 +93,7 @@ class ViewController: UIViewController {
         // sets tip and total price label values based on new bill value
         tipLabel.text = currencyFormatter.string(from: NSNumber(value: tip))
         totalLabel.text = currencyFormatter.string(from: NSNumber(value: bill + tip))
-        if(numOfChecks > 1) {
+        if numOfChecks > 1 {
             numOfChecksLabel.text = String(numOfChecks) + " Checks:"
             splitBill2.text = currencyFormatter.string(from: NSNumber(value: (bill + tip) / Double(numOfChecks)))
         } else {
