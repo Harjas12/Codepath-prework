@@ -34,7 +34,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+One of the struggles I had when creating this application was learning how the view cycle on iOS works.
 
 ## License
 
