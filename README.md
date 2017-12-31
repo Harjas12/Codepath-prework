@@ -34,7 +34,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-One of the struggles I had when creating this application was learning how the view cycle on iOS works.
+One of the struggles I had when creating this application was pre-filling the information onto the screen when the app loaded up. I realized that this was an issue with me not undertanding
+how the view lifecycle in iOS workes. Once I understood this view lifescycle, I was able to prooerly prefill the fields with saved information before the user sees the view.
 
 ## License
 
